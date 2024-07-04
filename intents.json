@@ -353,7 +353,7 @@
   },
   {
     "tag" : "Headaches",
-    "patterns" : ["stress","dehydration","nausea","vomiting","ncreased sensitivity to light or sound","watering or red eye","blocked or runny nose"],
+    "patterns" : ["stress","dehydration","nausea","vomiting","increased sensitivity to light or sound","watering or red eye","blocked or runny nose"],
     "responses" : ["According to your symptoms you might have Headaches","You have Headaches","I suppose you have Headaches"]
   },
   {

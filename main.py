@@ -40,8 +40,8 @@ classes = sorted(set(classes))
 pickle.dump(words, open('words.pkl', 'wb'))
 pickle.dump(classes, open('classes.pkl', 'wb'))
 
-dataset = []
-template = [0]*len(classes)
+bags = []
+output_rows = []
 
 for document in documents:
     bag = []
@@ -52,15 +52,22 @@ for document in documents:
     for word in words:
         bag.append(1) if word in word_patterns else bag.append(0)
 
-    output_row = list(template)
+    output_row = [0] * len(classes)
     output_row[classes.index(document[1])] = 1
-    dataset.append([bag, output_row])
+    bags.append(bag)
+    output_rows.append(output_row)
 
-random.shuffle(dataset)
-dataset = np.array(dataset)
+bags = np.array(bags)
+output_rows = np.array(output_rows)
 
-train_x = list(dataset[:, 0])
-train_y = list(dataset[:, 1])
+print(len(bags), bags[-1])
+print(len(output_rows), output_rows[-1])
+
+# random.shuffle(bags)
+# random.shuffle(output_rows)
+
+train_x = bags
+train_y = output_rows
 
 model = Sequential()
 model.add(Dense(256, input_shape=(len(train_x[0]),),
@@ -69,7 +76,6 @@ model.add(Dropout(0.5))
 model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(len(train_y[0]), activation='softmax'))
-
 
 sgd = SGD(learning_rate=0.01,
           momentum=0.9, nesterov=True)
