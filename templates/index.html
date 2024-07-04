@@ -4,6 +4,50 @@
 <head>
   <title>Medical Chatbot</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    /* Dark mode styles */
+    body {
+      background-color: #1a1a1a;
+      color: #e6e6e6;
+    }
+
+    #chat-container {
+      background-color: #2b2b2b;
+      padding: 10px;
+      border-radius: 5px;
+      height: 400px;
+      overflow-y: scroll;
+    }
+
+    #chat-container div {
+      padding: 5px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+
+    #chat-container div:nth-child(odd) {
+      background-color: #3c3c3c;
+    }
+
+    #user-input {
+      background-color: #2b2b2b;
+      color: #e6e6e6;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin-right: 5px;
+      width: 70%;
+    }
+
+    #send-btn {
+      background-color: #4caf50;
+      color: #e6e6e6;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
