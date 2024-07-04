@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Medical Chatbot</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <h1>Medical Chatbot</h1>
+  <div id="chat-container">
+    <!-- Chat messages will be displayed here -->
+  </div>
+  <input type="text" id="user-input" placeholder="Enter your message...">
+  <button id="send-btn">Send</button>
+
+  <script>
+    $(document).ready(function () {
+      $("#send-btn").click(function () {
+        var userInput = $("#user-input").val();
+        $.post("/get", { msg: userInput }, function (response) {
+          $("#chat-container").append("<div>User: " + userInput + "</div>");
+          $("#chat-container").append("<div>Bot: " + response + "</div>");
+          $("#user-input").val("");
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
