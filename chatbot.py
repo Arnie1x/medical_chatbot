@@ -42,6 +42,18 @@ def bag_of_words(sentence):
 
 
 def predict_class(sentence):
+	"""
+	The function `predict_class` takes a sentence as input, predicts the class of the sentence using a
+	pre-trained model, and returns a list of intents along with their probabilities based on the
+	prediction results.
+	
+	:param sentence: The `predict_class` function takes a sentence as input and predicts the class or
+	intent of that sentence based on a pre-trained model. The function uses a bag of words
+	representation of the sentence, then predicts the class using the model. It filters out predictions
+	below a certain threshold and returns a list of
+	:return: The `predict_class` function returns a list of dictionaries, where each dictionary contains
+	the predicted intent and its corresponding probability for the input sentence.
+	"""
 	bow = bag_of_words(sentence)
 	res = model.predict(np.array([bow]))[0]
 

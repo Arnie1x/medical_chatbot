@@ -5,28 +5,58 @@
   <title>Medical Chatbot</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    * {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    h1 {
+      padding: 10px;
+    }
+
     /* Dark mode styles */
     body {
       background-color: #1a1a1a;
       color: #e6e6e6;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
     }
 
     #chat-container {
       background-color: #2b2b2b;
       padding: 10px;
       border-radius: 5px;
-      height: 400px;
-      overflow-y: scroll;
+      flex-grow: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
     }
 
     #chat-container div {
-      padding: 5px;
-      border-radius: 5px;
+      padding: 5px 10px;
+      border-radius: 10px;
       margin-bottom: 5px;
+      max-width: 70%;
     }
 
-    #chat-container div:nth-child(odd) {
+    .user-text {
+      align-self: flex-end;
+      background-color: #4caf50;
+    }
+
+    .bot-text {
+      align-self: flex-start;
       background-color: #3c3c3c;
+    }
+
+    #input-container {
+      display: flex;
+      padding: 10px;
     }
 
     #user-input {
@@ -35,8 +65,7 @@
       border: none;
       padding: 10px;
       border-radius: 5px;
-      margin-right: 5px;
-      width: 70%;
+      flex-grow: 1;
     }
 
     #send-btn {
@@ -46,6 +75,7 @@
       padding: 10px 20px;
       border-radius: 5px;
       cursor: pointer;
+      margin-left: 5px;
     }
   </style>
 </head>
@@ -55,19 +85,34 @@
   <div id="chat-container">
     <!-- Chat messages will be displayed here -->
   </div>
-  <input type="text" id="user-input" placeholder="Enter your message...">
-  <button id="send-btn">Send</button>
+  <div id="input-container">
+    <input type="text" id="user-input" placeholder="Enter your message...">
+    <button id="send-btn">Send</button>
+  </div>
 
   <script>
     $(document).ready(function () {
       $("#send-btn").click(function () {
-        var userInput = $("#user-input").val();
-        $.post("/get", { msg: userInput }, function (response) {
-          $("#chat-container").append("<div>User: " + userInput + "</div>");
-          $("#chat-container").append("<div>Bot: " + response + "</div>");
-          $("#user-input").val("");
-        });
+        sendMessage();
       });
+
+      $("#user-input").keydown(function (event) {
+        if (event.keyCode === 13) {
+          sendMessage();
+        }
+      });
+
+      function sendMessage() {
+        var userInput = $("#user-input").val();
+        if (userInput.trim() !== "") {
+          $.post("/get", { msg: userInput }, function (response) {
+            $("#chat-container").append("<div class='user-text'>" + userInput + "</div>");
+            $("#chat-container").append("<div class='bot-text'>" + response + "</div>");
+            $("#user-input").val("");
+            $("#chat-container").scrollTop($("#chat-container")[0].scrollHeight);
+          });
+        }
+      }
     });
   </script>
 </body>

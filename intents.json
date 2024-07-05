@@ -433,7 +433,7 @@
   },
   {
     "tag" : "Ingrown toenail",
-    "patterns" : ["inflammation in toe","yellow pus from toe","oedema","curling of nail"],
+    "patterns" : ["inflammation in toe","yellow pus from toe","oedema","edema","curling of nail"],
     "responses" : ["According to your symptoms you might have Ingrown toenail","You have Ingrown toenail","I suppose you have Ingrown toenail"]
   },
   {
@@ -458,17 +458,17 @@
   },
   {
     "tag" : "Irritable hip",
-    "patterns" : ["slightly higher temperature","pain in the knee","thigh pain","estricted movement in hip joints","limping","hip pain"],
+    "patterns" : ["slightly higher temperature","pain in the knee","thigh pain","restricted movement in hip joints","limping","hip pain"],
     "responses" : ["According to your symptoms you might have Irritable hip","You have Irritable hip","I suppose you have Irritable hip"]
   },
   {
     "tag" : "Itching",
-    "patterns" : ["Redness","leathery or scaly patches","scratch marks","blisters","cracked skin","itchy skin","itchness all over body","dry skin","persistent itch"],
+    "patterns" : ["Redness","leathery or scaly patches","scratch marks","blisters","cracked skin","itchy skin","itchiness all over body","dry skin","persistent itch"],
     "responses" : ["According to your symptoms you might have Itching","You have Itching","I suppose you have Itching"]
   },
   {
     "tag" : "Itchy bottom",
-    "patterns" : ["persistent anal itch","anal bleeding","stool leakage","severe rectal itch","itchness in  bottom"],
+    "patterns" : ["persistent anal itch","anal bleeding","stool leakage","severe rectal itch","itchiness in  bottom"],
     "responses" : ["According to your symptoms you might have Itchy bottom","You have Itchy bottom","I suppose you have Itchy bottom"]
   },
   {
@@ -483,7 +483,7 @@
   },
   {
     "tag" : "Kidney stones",
-    "patterns" : ["persistent ache in lower back","periods of intense pain","nausea","pain while urination","blood in urine","gfrequent urge to urinate","restlessness"],
+    "patterns" : ["persistent ache in lower back","periods of intense pain","nausea","pain while urination","blood in urine","frequent urge to urinate","restlessness"],
     "responses" : ["According to your symptoms you might have Kidney stones","You have Kidney stones","I suppose you have Kidney stones"]
   },
 
