@@ -23,6 +23,15 @@ model = load_model('chatbot_model.h5')
 
 
 def clean_up_sentence(sentence):
+	"""
+	The `clean_up_sentence` function tokenizes and lemmatizes the words in a given sentence using NLTK.
+	
+	:param sentence: The `clean_up_sentence` function takes a sentence as input, tokenizes the words in
+	the sentence using the NLTK library, and then lemmatizes each word in the tokenized list. Finally,
+	it returns the lemmatized words as a list
+	:return: The function `clean_up_sentence` returns a list of lemmatized words extracted from the
+	input sentence.
+	"""
 	sentence_words = nltk.word_tokenize(sentence)
 	sentence_words = [lemmatizer.lemmatize(word)
 					for word in sentence_words]
@@ -31,6 +40,17 @@ def clean_up_sentence(sentence):
 
 
 def bag_of_words(sentence):
+	"""
+	The `bag_of_words` function takes a sentence as input, cleans it up, and creates a bag of words
+	representation of the sentence using a binary vector.
+	
+	:param sentence: The `bag_of_words` function seems to be creating a bag of words representation for
+	a given sentence. However, the `clean_up_sentence` function and the `words` variable are not defined
+	in the provided code snippet
+	:return: The function `bag_of_words(sentence)` returns a numpy array representing a bag of words for
+	the input sentence. Each element in the array corresponds to a word in the vocabulary `words`, and
+	the value is 1 if the word is present in the input sentence and 0 otherwise.
+	"""
 	sentence_words = clean_up_sentence(sentence)
 	bag = [0] * len(words)
 
@@ -72,6 +92,18 @@ def predict_class(sentence):
 
 
 def get_response(intents_list, intents_json):
+	"""
+	This Python function retrieves a response based on the provided intent from a list of intents and
+	corresponding JSON data.
+	
+	:param intents_list: A list containing dictionaries with information about different intents. Each
+	dictionary includes the 'intent' key, which represents the intent of the user input
+	:param intents_json: Intents_json is a JSON object that contains a list of intents with their
+	corresponding tags and responses. Each intent object in the list has keys like 'tag' for the intent
+	tag and 'responses' for a list of possible responses associated with that intent
+	:return: a response based on the intent provided in the `intents_list`. It looks for the matching
+	intent in the `intents_json` and returns a random response associated with that intent.
+	"""
 	tag = intents_list[0]['intent']
 	list_of_intents = intents_json['intents']
 
@@ -83,15 +115,6 @@ def get_response(intents_list, intents_json):
 			break
 	return result
 
-
-# This function will predict and return the result in text
-def calling_the_bot(txt):
-	global res
-	predict = predict_class(txt)
-	res = get_response(predict, intents)
-
-	print("Your Symptom was : ", txt)
-	print("Result found in our Database : ", res)
 
 def get_input():
   text = input()
